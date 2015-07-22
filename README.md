@@ -3,6 +3,12 @@ Yelp changed its page structure thus the original repo is outdated.
 
 Also with the new version, you will also get an xml version of the ouput where you can easily use to import your content to your favorite cms.
 
+I will be updating the XML to provide more granular information from each yelp review such as business type as well as featured images taken by yelpers.
+
+I will also create cms specific import files. Wordpress, Drupal.
+
+Create tickets for any special requests.
+
 The command has changed from yell to yell2
 
 
