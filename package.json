@@ -1,14 +1,11 @@
 {
-  "author": {
-    "name": "Shahin Mohammadkhani",
-    "url": "https://github.com/skhani"
-  },
+  "author": "Shahin Mohammadkhani (https://github.com/skhani)",
   "name": "yell2",
-  "description": "a yelp scraper which scrapes all review of a given user given their profile ID.",
-  "version": "0.0.3",
+  "description": "a yelp scraper which scrapes all reviews of a user given their profile ID.",
+  "version": "0.0.4",
   "repository": {
     "type": "git",
-    "url": "git://github.com/skhani/yell.git"
+    "url": "git://github.com/skhani/yell2.git"
   },
   "engines": {
     "node": ">= v0.4.0"
@@ -19,6 +16,20 @@
     "get": "1.1.2"
   },
   "bin": {
-      "yell2": "yell2"
-  }
+    "yell2": "yell2"
+  },
+  "bugs": {
+    "url": "https://github.com/skhani/yell2/issues"
+  },
+  "homepage": "https://github.com/skhani/yell2",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "yelp",
+    "scraper"
+  ],
+  "license": "ISC"
 }
