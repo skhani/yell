@@ -1,5 +1,13 @@
+This is a forked and updated repo. 
+Yelp changed its page structure thus the original repo is outdated.
+
+Also with the new version, you will also get an xml version of the ouput where you can easily use to import your content to your favorite cms.
+
+The command has changed from yell to yell2
+
+
 ```
-~/⇾ yell YOUR_USER_ID
+~/⇾ yell2 YOUR_USER_ID
 fetching articles starting with 0
 fetching articles starting with 10
 fetching articles starting with 20
@@ -39,5 +47,5 @@ and to your user page, and looking in the URL. It'll be like:
 
 That end bit - the random letters after the `=`, is your userid.
 
-    npm install yell
-    yell YOUR_YELP_USER_ID
+    npm install yell2
+    yell2 YOUR_YELP_USER_ID

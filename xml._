@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+<% reviews.forEach(function(r) { %>
+    <item>
+        <title><%= r.name %></title>
+        <pubDate><%= r.date %></pubDate>
+        <stars><%= r.stars %></stars>
+        <content:encoded>
+        <![CDATA[ <%= r.text %> ]]>
+        </content:encoded>
+    </item>
+    <% }); %>
+  </channel>

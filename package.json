@@ -1,14 +1,14 @@
 {
   "author": {
-    "name": "Tom MacWright",
-    "url": "http://macwright.org/"
+    "name": "Shahin Mohammadkhani",
+    "url": "https://github.com/skhani"
   },
-  "name": "yell",
-  "description": "a yelp scraper",
-  "version": "0.0.2",
+  "name": "yell2",
+  "description": "a yelp scraper which scrapes all review of a given user given their profile ID.",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
-    "url": "git://github.com/tmcw/yell.git"
+    "url": "git://github.com/skhani/yell.git"
   },
   "engines": {
     "node": ">= v0.4.0"
@@ -19,6 +19,6 @@
     "get": "1.1.2"
   },
   "bin": {
-      "yell": "yell"
+      "yell2": "yell2"
   }
 }

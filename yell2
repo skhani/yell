@@ -11,7 +11,7 @@ var userid = process.argv[2],
     reviews = [];
 
 if (!userid) throw "Please specify a Yelp userid as the only argument to this " +
-        "utility. Find it by going to your profile page and looking in the URL.";
+        "utility. Find it by going to your profile page and looking int he URL.";
 
 function yurl(start) {
     console.log('fetching articles starting with ' + start);
@@ -22,14 +22,23 @@ function yurl(start) {
 function done(reviews) {
     fs.writeFileSync('yelp.json', JSON.stringify(reviews), 'utf8');
     draw(reviews);
-    console.log('\nFinished! Find in this directory:\n- yelp.html, a hreview-formatted HTML version\n- yelp.json: raw JSON data.');
+    console.log('\nFinished! Find in this directory:\n- yelp.html, a hreview-formatted HTML version\n- yelp.json: raw JSON data.\n- yelp.xml: for transfering your content to your blog');
 }
 
 function draw(r) {
     fs.writeFileSync('yelp.html', _.template(fs.readFileSync(path.join(__dirname, 'page._'), 'utf8'))({
         reviews: r
     }), 'utf8');
+    drawxml(reviews);
 }
+
+function drawxml(r) {
+    fs.writeFileSync('yelp.xml', _.template(fs.readFileSync(path.join(__dirname, 'xml._'), 'utf8'))({
+        reviews: r
+    }), 'utf8');
+}
+
+
 
 function load(n) {
     get({ uri: yurl(n) }).asString(function(err, str) {
@@ -38,10 +47,13 @@ function load(n) {
         var $ = cheerio.load(str);
         $('div.review').each(function(i, elem) {
             reviews.push({
-                text: $(this).children('div.review_comment').text(),
-                name: $(this).children('h4 a').text(),
-                stars: parseInt($(this).find('i.star-img img').attr('alt'), 10),
-                id:  $(this).children('h4 a').attr('href').match(/\/biz\/([\d\w\-]*)/)[1]
+                text: $(this).children('div.review-content p').text(),
+                date: $(this).children('span.rating-qualifier').text(),
+                name: $(this).children('div.media-title a').text(),
+                stars: parseInt($(this).children('i.star-img img').attr('alt'), 10),
+                featuredimage: $(this).children('div.review-content ul li div.photo-box.photobox--interactive img').attr('src'),
+                //id:  $(this).children('div.review').attr('data-review-id')
+                //id:  $(this).children('h4 a').attr('href').match(/\/list\/([\d\w\-]*)/)[1]
             });
         });
         if ($('#pager_page_next').length) {
