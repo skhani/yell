@@ -22,6 +22,7 @@ function yurl(start) {
 function done(reviews) {
     fs.writeFileSync('yelp.json', JSON.stringify(reviews), 'utf8');
     draw(reviews);
+    drawxml(reviews);
     console.log('\nFinished! Find in this directory:\n- yelp.html, a hreview-formatted HTML version\n- yelp.json: raw JSON data.\n- yelp.xml: for transfering your content to your blog');
 }
 
@@ -29,7 +30,6 @@ function draw(r) {
     fs.writeFileSync('yelp.html', _.template(fs.readFileSync(path.join(__dirname, 'page._'), 'utf8'))({
         reviews: r
     }), 'utf8');
-    drawxml(reviews);
 }
 
 function drawxml(r) {
@@ -47,7 +47,7 @@ function load(n) {
         var $ = cheerio.load(str);
         $('div.review').each(function(i, elem) {
             reviews.push({
-                text: $(this).children('div.review-content p').text(),
+                text: $(this).children('div.review-content p').html(),
                 date: $(this).children('span.rating-qualifier').text(),
                 name: $(this).children('div.media-title a').text(),
                 stars: parseInt($(this).children('i.star-img img').attr('alt'), 10),
